@@ -6,6 +6,8 @@ SPWG = src/pwgen
 SLIBPWG = src/libpwgen
 OBJECTS = pwgen.exe pwgen.o pwgen.d reg.o reg.d Odn.o Odn.d Spec.o Spec.d num.o num.d generate.o generate.d copy.o copy.d
 
+all: bin/pwgen.exe
+
 bin/pwgen.exe: $(PWG)/pwgen.o $(LIBPWG)/reg.o $(LIBPWG)/Odn.o $(LIBPWG)/Spec.o $(LIBPWG)/num.o $(LIBPWG)/generate.o $(LIBPWG)/copy.o
 	$(CXX) -I src -Wall -Werror -o bin/pwgen.exe $(PWG)/pwgen.o $(LIBPWG)/reg.o $(LIBPWG)/Odn.o $(LIBPWG)/Spec.o $(LIBPWG)/num.o $(LIBPWG)/generate.o $(LIBPWG)/copy.o
 
@@ -31,6 +33,14 @@ $(PWG)/pwgen.o: src/pwgen/main.cpp
 	$(CXX) -I src $(CFLAGS) -MMD -o $(PWG)/pwgen.o $(SPWG)/main.cpp
 
 -include pwgen.d reg.d Odn.d Spec.d num.d generate.d copy.d
+
+test: bin/test.exe
+
+bin/test.exe: obj/test/test.o $(LIBPWG)/reg.o $(LIBPWG)/Odn.o $(LIBPWG)/Spec.o $(LIBPWG)/num.o $(LIBPWG)/generate.o $(LIBPWG)/copy.o
+	$(CXX) -I src -Wall -Werror -o bin/test obj/test/test.o $(LIBPWG)/reg.o $(LIBPWG)/Odn.o $(LIBPWG)/Spec.o $(LIBPWG)/num.o $(LIBPWG)/generate.o $(LIBPWG)/copy.o
+
+obj/test/test.o: test/test.cpp
+	$(CXX) -I src -I thirdparty $(CFLAGS) -MMD -o obj/test/test.o test/test.cpp
 
 .PHONY: clean
 clean: 
