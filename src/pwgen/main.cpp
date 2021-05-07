@@ -6,29 +6,35 @@
 #include <ctime>
 #include <vector>
 #include <conio.h>
+#include "libpwgen/generate.h"
+#include "libpwgen/num.h"
+#include "libpwgen/Odn.h"
+#include "libpwgen/reg.h"
+#include "libpwgen/Spec.h"
+#include "libpwgen/copy.h"
 
 using namespace std;
 
 int main()
 {
 	int k, n, * Mask, i;
-	int b1, b2, b3, b4;
+	int b1, b2, b3, b4, b5;
 	char r;
 	string Pass;
 	srand(time(NULL));
-	cout << "Кол-во символов в пароле:";
+	cout << "Password lenght:";
 	cin >> n;
 	cout << "\n";
-	cout << "Добавить цифры? 1/0 ";
+	cout << "Add num? 1/0 ";
 	cin >> b1;
 	cout << "\n";
-	cout << "Добавить ВеРхНиЙ РеГиСтР? 1/0 ";
+	cout << "Add upper case? 1/0 ";
 	cin >> b2;
 	cout << "\n";
-	cout << "Добавить $пеци@льные символы? 1/0 ";
+	cout << "Add special characters? 1/0 ";
 	cin >> b3;
 	cout << "\n";
-	cout << "Убрать неоднозначность? 1/0 ";
+	cout << "Remove ambiguity? 1/0 ";
 	cin >> b4;
 	cout << "\n";
 
@@ -47,10 +53,13 @@ int main()
 		for (i = 0; i < n; i++) {
 			Mask[i] = 0;
 		}
-		cout << "чтобы обновить нажмите r" << endl;
+		cout << "Copy password? 1/0\n";
+		cin >> b5;
+		if (b5 == 1) { copy(Pass); }
+		cout << "To refresh click r" << endl;
 		cout << "\n";
 		r = getch();
 	} while (r == 'r');
-
+	
 	return 0;
 }

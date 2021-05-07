@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <reg.h>
+#include "reg.h"
 using namespace std;
 
 int Reg(int n, string& Pass, int Mask[], int k) {

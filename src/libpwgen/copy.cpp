@@ -1,14 +1,14 @@
 #include <iostream>
 #include <string>
 #include <windows.h>
+#include <cstring>
 #include "copy.h"
 
 using namespace std;
 
 int copy(string& Pass) {
-    string Pass = "wvrerverv";
     char CharPass[50];
-    strcpy_s(CharPass, Pass.c_str());
+    strncpy(CharPass, Pass.c_str(),50);
     if (OpenClipboard(0))
     {
         EmptyClipboard();
