@@ -1,7 +1,4 @@
-#include <iostream>
-#include <string>
-#include <windows.h>
-#include <cstring>
+#include <Windows.h>
 #include "copy.h"
 
 using namespace std;

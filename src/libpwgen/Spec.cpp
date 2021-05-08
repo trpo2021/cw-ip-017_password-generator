@@ -8,7 +8,7 @@ using namespace std;
 
 int Spec(int n, string& Pass, int Mask[], int k) {
 	string s, s_2;
-	s = "!@#$%^&*()-_+=/?|~[]{}";
+    s = "!@#$%^&*()-_+=/?|~[]{}";
 	int i, count = 0, * UkA, * UkB;
 
 	for (i = 0; i < k; i++) {
