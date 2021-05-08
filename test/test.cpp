@@ -6,3 +6,16 @@
 #include "libpwgen/Spec.h"
 #include "libpwgen/generate.h"
 #include "libpwgen/copy.h"
+TEST_CASE("reg", " ")
+{
+    string Pass = "acwdbsnbwr";
+    int Mask[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    Reg(Pass.size(), Pass, Mask, 4);
+    int count = 0;
+    for (auto& c : Pass) {
+        if (isalpha(c) && isupper(c)) {
+            count++;
+        }
+    }
+    CHECK(count == 4);
+}
