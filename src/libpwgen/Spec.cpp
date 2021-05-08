@@ -30,7 +30,7 @@ int Spec(int n, string& Pass, int Mask[], int k) {
 	}
 	UkB = new int[k];
 	for (i = 0; i < k; i++) {
-		UkB[i] = UkA[rand() % count];
+		UkB[i] = UkA[rand() % count-1];
 	}
 	for (i = 0; i < k; i++) {
 		Mask[UkB[i]] = 3;
