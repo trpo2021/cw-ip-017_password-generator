@@ -19,3 +19,8 @@ TEST_CASE("reg", " ")
     }
     CHECK(count == 4);
 }
+TEST_CASE("copy", " ")
+{
+    string Pass = "aCwd4s!b7R";
+    CHECK(copy(Pass));
+}

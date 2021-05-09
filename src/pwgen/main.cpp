@@ -5,15 +5,13 @@
 #include "libpwgen/num.h"
 #include "libpwgen/reg.h"
 #include <conio.h>
-#include <cstdlib>
 #include <ctime>
-#include <fstream>
 #include <iostream>
-#include <stdio.h>
 #include <string>
-#include <vector>
+
 
 using namespace std;
+
 
 int main()
 {
@@ -62,6 +60,7 @@ int main()
         }
         cout << "Copy password? 1/0\n";
         cin >> b5;
+        b5 = 0;
         if (b5 == 1) {
             copy(Pass);
         }

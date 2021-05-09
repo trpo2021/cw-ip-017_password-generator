@@ -8,7 +8,7 @@ using namespace std;
 
 int Spec(int n, string& Pass, int Mask[], int k) {
 	string s, s_2;
-    s = "!@#$%^&*()-_+=/?|~[]{}";
+    s = "!@#$%^&*()-_+=/?|~[]{}\\";
 	int i, count = 0, * UkA, * UkB;
 
 	for (i = 0; i < k; i++) {
@@ -19,7 +19,7 @@ int Spec(int n, string& Pass, int Mask[], int k) {
 			count++;
 		}
 	}
-
+	
 	int temp = 0;
 	UkA = new int[count];
 	for (i = 0; i < n; i++) {
@@ -28,6 +28,7 @@ int Spec(int n, string& Pass, int Mask[], int k) {
 			temp++;
 		}
 	}
+
 	UkB = new int[k];
 	for (i = 0; i < k; i++) {
 		UkB[i] = UkA[rand() % count];
@@ -38,5 +39,6 @@ int Spec(int n, string& Pass, int Mask[], int k) {
 	for (i = 0; i < k; i++) {
 		Pass[UkB[i]] = s_2[i];
 	}
+
 	return 0;
 }

@@ -8,7 +8,6 @@ using namespace std;
 
 int Generate(int n, string& Pass, int Mask[])
 {
-	srand(time(NULL));
 	int temp;
 	int* A = new int[n];
 	for (int i = 0; i < n; i++) {
