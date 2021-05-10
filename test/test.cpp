@@ -24,3 +24,17 @@ TEST_CASE("copy", " ")
     string Pass = "aCwd4s!b7R";
     CHECK(copy(Pass));
 }
+
+TEST_CASE("generate", " ")
+{
+    int Mask[6], n = 0;
+    string Pass;
+    Generate(6, Pass, Mask);
+    for (auto& c : Pass) {
+        if (islower(c)) { 
+            //proverka na vsekh li mestakh bukvy nizhnego registra
+            n++;
+        }
+    }
+    CHECK(n == 6);
+}
