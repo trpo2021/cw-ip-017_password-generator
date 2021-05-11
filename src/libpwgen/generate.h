@@ -1,6 +1,4 @@
 #pragma once
 #include <string>
 
-using namespace std;
-
-int Generate(int n, string& Pass, int Mask[]);
+int Generate(int n, std::string& Pass, int Mask[]);
