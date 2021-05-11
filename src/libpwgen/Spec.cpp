@@ -1,7 +1,7 @@
 #include "Spec.h"
-#include <iostream>
-#include <ctime>
 #include <cstdlib>
+#include <ctime>
+#include <iostream>
 #include <string>
 
 using namespace std;
