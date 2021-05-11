@@ -9,7 +9,7 @@
 TEST_CASE("reg", " ")
 {
     string Pass = "acwdbsnbwr";
-    int Mask[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    int Mask[] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
     Reg(Pass.size(), Pass, Mask, 4);
     int count = 0;
     for (auto& c : Pass) {
@@ -31,7 +31,7 @@ TEST_CASE("generate", " ")
     string Pass;
     Generate(6, Pass, Mask);
     for (auto& c : Pass) {
-        if (islower(c)) { 
+        if (islower(c)) {
             //proverka na vsekh li mestakh bukvy nizhnego registra
             n++;
         }
