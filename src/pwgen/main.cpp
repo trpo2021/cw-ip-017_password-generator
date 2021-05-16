@@ -15,12 +15,12 @@ using namespace std;
 int main()
 {
     int k, n, *Mask, i;
-    /* Кнопки настроек пароля:
-     * numbers-добавляет цифры в пароль
-     * registr-добавляет буквы верхнего регистра
-     * symbols-добавляет символы
-     * unambiguity-убирает неоднозначность символов
-     * Copy-копирует пароль в буфер обмена
+    /* Password setting buttons:
+     * numbers-adds numbers to the password
+     * registr-adds uppercase letters
+     * symbols-adds symbols
+     * unambiguity-removes character ambiguity
+     * Copy-copies the password to the clipboard
      */
     int numbers, registr, symbols, unambiguity, Copy;
     char r;
