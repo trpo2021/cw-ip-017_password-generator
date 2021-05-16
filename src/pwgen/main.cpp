@@ -1,8 +1,8 @@
 #include "libpwgen/Odn.h"
-#include "libpwgen/isint.h"
 #include "libpwgen/Spec.h"
 #include "libpwgen/copy.h"
 #include "libpwgen/generate.h"
+#include "libpwgen/isint.h"
 #include "libpwgen/num.h"
 #include "libpwgen/reg.h"
 #include <conio.h>
@@ -12,49 +12,55 @@
 
 using namespace std;
 
-
 int main()
 {
     int k, n, *Mask, i;
-    int b1, b2, b3, b4, b5;
+    /* Кнопки настроек пароля:
+     * numbers-добавляет цифры в пароль
+     * registr-добавляет буквы верхнего регистра
+     * symbols-добавляет символы
+     * unambiguity-убирает неоднозначность символов
+     * Copy-копирует пароль в буфер обмена
+     */
+    int numbers, registr, symbols, unambiguity, Copy;
     char r;
     string Pass;
     srand(time(NULL));
     n = inputInt("Password lenght(integer): ");
     cout << "\n";
-    b1 = inputInt("Add num? 1-true,other-false: ");
+    numbers = inputInt("Add numbers? 1-true,other-false: ");
     cout << "\n";
-    b2 = inputInt("Add upper case? 1-true,other-false: ");
+    registr = inputInt("Add upper case? 1-true,other-false: ");
     cout << "\n";
-    b3 = inputInt("Add special characters? 1-true,other-false: ");
+    symbols = inputInt("Add special characters? 1-true,other-false: ");
     cout << "\n";
-    b4 = inputInt("Remove ambiguity? 1-true,other-false: ");
+    unambiguity = inputInt("Remove ambiguity? 1-true,other-false: ");
     cout << "\n";
 
     Mask = new int[n];
-    k = n / ((b1==1) + (b2==1) + (b3==1) + 1);
+    k = n / ((numbers == 1) + (registr == 1) + (symbols == 1) + 1);
 
     do {
         r = 'n';
         Generate(n, Pass, Mask);
-        if (b1 == 1) {
+        if (numbers == 1) {
             Num(n, Pass, Mask, k);
         }
-        if (b2 == 1) {
+        if (registr == 1) {
             Reg(n, Pass, Mask, k);
         }
-        if (b3 == 1) {
+        if (symbols == 1) {
             Spec(n, Pass, Mask, k);
         }
-        if (b4 == 1) {
+        if (unambiguity == 1) {
             Odn(n, Pass, Mask);
         }
         cout << Pass << endl;
         for (i = 0; i < n; i++) {
             Mask[i] = 0;
         }
-        b5 = inputInt("Copy password? 1-true,other-false: ");
-        if (b5 == 1) {
+        Copy = inputInt("Copy password? 1-true,other-false: ");
+        if (Copy == 1) {
             copy(Pass);
         }
         cout << "To refresh click r" << endl;
