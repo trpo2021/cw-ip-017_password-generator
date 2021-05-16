@@ -5,6 +5,10 @@
 #include "libpwgen/Spec.h"
 #include "libpwgen/copy.h"
 #include "libpwgen/isint.h"
+#include "libpwgen/generate.h"
+#include <string>
+
+using std::string;
 
 string GetClipboardText()
 {
@@ -33,21 +37,18 @@ TEST_CASE("reg", " ")
 }
 TEST_CASE("copy", " ")
 {
-    std::string Pass = "aCwd4s!b7R";
+    string Pass = "aCwd4s!b7R";
     copy(Pass);
     CHECK(Pass == GetClipboardText());
 }
 TEST_CASE("isInt", " ")
 {
-    /*CHECK(isInt("abbc")==false);
+    CHECK(isInt("abbc")==false);
     CHECK(isInt("1.3")==false);
     CHECK(isInt("1,67")==false);
     CHECK(isInt(".45")==false);
-    CHECK(isInt("5")==true);*/
+    CHECK(isInt("5")==true);
     CHECK(isInt("-5")==true);
-}
-    string Pass = "aCwd4s!b7R";
-    CHECK(copy(Pass));
 }
 
 TEST_CASE("generate", " ")

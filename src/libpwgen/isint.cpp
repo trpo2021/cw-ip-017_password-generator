@@ -1,5 +1,6 @@
 #include "isint.h"
 #include<iostream>
+#include<string>
 
 bool isInt(std::string str)
 {
@@ -7,7 +8,7 @@ bool isInt(std::string str)
         return false;
     for (int i = 0; i < (int)str.length(); ++i)
     {
-        if (!isdigit(str[i])) {
+        if (!isdigit(str[i]) || str[i] == '.' || str[i] == ',') {
             if (i==0 && str[i]!='-')
             return false;
         }
