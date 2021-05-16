@@ -13,7 +13,7 @@ jobs:
         run: git ls-files *.{cpp,h} | xargs clang-format -i --verbose && git diff --exit-code
 
       - name: Test
-        run: make test && bin/test
+        run: make test && ./bin/test
 
       - name: Build application
         run: make
