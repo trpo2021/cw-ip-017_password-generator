@@ -1,4 +1,5 @@
 #include "libpwgen/Odn.h"
+#include "libpwgen/isint.h"
 #include "libpwgen/Spec.h"
 #include "libpwgen/copy.h"
 #include "libpwgen/generate.h"
@@ -8,7 +9,6 @@
 #include <ctime>
 #include <iostream>
 #include <string>
-
 
 using namespace std;
 
@@ -20,24 +20,19 @@ int main()
     char r;
     string Pass;
     srand(time(NULL));
-    cout << "Password lenght:";
-    cin >> n;
+    n = inputInt("Password lenght(integer): ");
     cout << "\n";
-    cout << "Add num? 1/0 ";
-    cin >> b1;
+    b1 = inputInt("Add num? 1-true,other-false: ");
     cout << "\n";
-    cout << "Add upper case? 1/0 ";
-    cin >> b2;
+    b2 = inputInt("Add upper case? 1-true,other-false: ");
     cout << "\n";
-    cout << "Add special characters? 1/0 ";
-    cin >> b3;
+    b3 = inputInt("Add special characters? 1-true,other-false: ");
     cout << "\n";
-    cout << "Remove ambiguity? 1/0 ";
-    cin >> b4;
+    b4 = inputInt("Remove ambiguity? 1-true,other-false: ");
     cout << "\n";
 
     Mask = new int[n];
-    k = n / (b1 + b2 + b3 + 1);
+    k = n / ((b1==1) + (b2==1) + (b3==1) + 1);
 
     do {
         r = 'n';
@@ -58,9 +53,7 @@ int main()
         for (i = 0; i < n; i++) {
             Mask[i] = 0;
         }
-        cout << "Copy password? 1/0\n";
-        cin >> b5;
-        b5 = 0;
+        b5 = inputInt("Copy password? 1-true,other-false: ");
         if (b5 == 1) {
             copy(Pass);
         }
