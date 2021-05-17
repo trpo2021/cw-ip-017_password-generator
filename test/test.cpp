@@ -1,11 +1,12 @@
 #define CATCH_CONFIG_MAIN
-#include "thirdparty/catch.hpp"
-#include "libpwgen/reg.h"
 #include "libpwgen/Odn.h"
 #include "libpwgen/Spec.h"
 #include "libpwgen/copy.h"
-#include "libpwgen/isint.h"
 #include "libpwgen/generate.h"
+#include "libpwgen/isint.h"
+#include "libpwgen/num.h"
+#include "libpwgen/reg.h"
+#include "thirdparty/catch.hpp"
 #include <string>
 
 using std::string;
@@ -43,12 +44,12 @@ TEST_CASE("copy", " ")
 }
 TEST_CASE("isInt", " ")
 {
-    CHECK(isInt("abbc")==false);
-    CHECK(isInt("1.3")==false);
-    CHECK(isInt("1,67")==false);
-    CHECK(isInt(".45")==false);
-    CHECK(isInt("5")==true);
-    CHECK(isInt("-5")==true);
+    CHECK(isInt("abbc") == false);
+    CHECK(isInt("1.3") == false);
+    CHECK(isInt("1,67") == false);
+    CHECK(isInt(".45") == false);
+    CHECK(isInt("5") == true);
+    CHECK(isInt("-5") == true);
 }
 
 TEST_CASE("generate", " ")
