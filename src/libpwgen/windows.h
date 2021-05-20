@@ -70,10 +70,7 @@ Abstract:
 
 #if defined(RC_INVOKED) && !defined(NOWINRES)
 
-
-
 #include <winresrc.h>
-
 
 #else
 
@@ -99,136 +96,119 @@ Abstract:
 #endif
 
 #if defined(__cplusplus) && defined(__BORLANDC__)
-#include <mem.h>  // Get correct namespace compliant protos for memcpy, etc.
-                  // since WINDOWS.H and its associated files use them.
+#include <mem.h> // Get correct namespace compliant protos for memcpy, etc.
+                 // since WINDOWS.H and its associated files use them.
 #endif
 
 #if defined(__BORLANDC__)
-#    ifndef _WIN32_WINNT
-#        define _WIN32_WINNT 0x0400  /* If not set, assume NT 4.00  */
-#    endif
-#    if !defined(__MFC_COMPAT__)
-#        undef  _ANONYMOUS_STRUCT    /* The correct term */
-#    else
-#        define _ANONYMOUS_STRUCT    /* on for __MFC_COMPAT__ support */
-#    endif
-#    if defined(__cplusplus)
-#        ifndef _WCHAR_T_DEFINED
-#           define _WCHAR_T_DEFINED
-#        endif
-#       define __inline  inline
-#    else
-#        undef  _ANONYMOUS_UNION    /* The correct term */
-#        define NONAMELESSUNION     /* Incorrect term, but MS keeps using it! */
-#        define __inline
-#    endif
-#    if defined(_UNICODE)
-#        define UNICODE
-#    endif
-#    if defined(__cplusplus)
-     // The following RTL functions are referred to in various macros defined
-     // in the Windows headers.  Since C++ now requires that most RTL functions
-     // appear in the std namespace, we must yank a copy of these into the
-     // global namespace so that the Windows Headers' non std:: scoped
-     // references to these RTL memxxx functions compile properly.
-        using std::memset;
-        using std::memcmp;
-        using std::memcpy;
-        using std::memmove;
-#    endif
+#ifndef _WIN32_WINNT
+#define _WIN32_WINNT 0x0400 /* If not set, assume NT 4.00  */
+#endif
+#if !defined(__MFC_COMPAT__)
+#undef _ANONYMOUS_STRUCT /* The correct term */
+#else
+#define _ANONYMOUS_STRUCT /* on for __MFC_COMPAT__ support */
+#endif
+#if defined(__cplusplus)
+#ifndef _WCHAR_T_DEFINED
+#define _WCHAR_T_DEFINED
+#endif
+#define __inline inline
+#else
+#undef _ANONYMOUS_UNION /* The correct term */
+#define NONAMELESSUNION /* Incorrect term, but MS keeps using it! */
+#define __inline
+#endif
+#if defined(_UNICODE)
+#define UNICODE
+#endif
+#if defined(__cplusplus)
+// The following RTL functions are referred to in various macros defined
+// in the Windows headers.  Since C++ now requires that most RTL functions
+// appear in the std namespace, we must yank a copy of these into the
+// global namespace so that the Windows Headers' non std:: scoped
+// references to these RTL memxxx functions compile properly.
+using std::memcmp;
+using std::memcpy;
+using std::memmove;
+using std::memset;
+#endif
 #endif
 
-#if !defined(_PPC_) && !defined(_ALPHA_) && !defined(_MIPS_) && !defined(_X86_) && defined(_M_IX86)
+#if !defined(_PPC_) && !defined(_ALPHA_) && !defined(_MIPS_) \
+        && !defined(_X86_) && defined(_M_IX86)
 #define _X86_
 #endif
 
-#if !defined(_PPC_) && !defined(_ALPHA_) && !defined(_X86_) && !defined(_MIPS_) && defined(_M_MRX000)
+#if !defined(_PPC_) && !defined(_ALPHA_) && !defined(_X86_) \
+        && !defined(_MIPS_) && defined(_M_MRX000)
 #define _MIPS_
 #endif
 
-#if !defined(_PPC_) && !defined(_ALPHA_) && !defined(_X86_) && !defined(_MIPS_) && defined(_M_ALPHA)
+#if !defined(_PPC_) && !defined(_ALPHA_) && !defined(_X86_) \
+        && !defined(_MIPS_) && defined(_M_ALPHA)
 #define _ALPHA_
 #endif
 
-#if !defined(_PPC_) && !defined(_ALPHA_) && !defined(_X86_) && !defined(_MIPS_) && defined(_M_PPC)
+#if !defined(_PPC_) && !defined(_ALPHA_) && !defined(_X86_) \
+        && !defined(_MIPS_) && defined(_M_PPC)
 #define _PPC_
 #endif
 
 #ifndef RC_INVOKED
-#if     ( _MSC_VER >= 800 )
-#pragma warning(disable:4001)
+#if (_MSC_VER >= 800)
+#pragma warning(disable : 4001)
 #endif
 
 #include <excpt.h>
-
 
 #include <stdarg.h>
 
 #endif /* RC_INVOKED */
 
-
 #include <windef.h>
-
 
 #include <winbase.h>
 
-
 #include <wingdi.h>
-
 
 #include <winuser.h>
 
-
 #include <winnls.h>
-
 
 #include <wincon.h>
 
-
 #include <winver.h>
-
 
 #include <winreg.h>
 
-
 #include <winnetwk.h>
-
 
 #ifndef WIN32_LEAN_AND_MEAN
 
 #include <cderr.h>
 
-
 #include <dde.h>
-
 
 #include <ddeml.h>
 
-
 #include <dlgs.h>
-
 
 #include <lzexpand.h>
 
-
 #include <mmsystem.h>
-
 
 #include <nb30.h>
 
-
 #include <rpc.h>
-
 
 #include <shellapi.h>
 
-
 #include <winperf.h>
 
-#if(_WIN32_WINNT >= 0x0400)
+#if (_WIN32_WINNT >= 0x0400)
 
 #include <winsock2.h>
-
 
 #include <mswsock.h>
 
@@ -238,7 +218,7 @@ Abstract:
 
 #endif /* _WIN32_WINNT >=  0x0400 */
 
-#if(_WIN32_WINNT >= 0x0400)
+#if (_WIN32_WINNT >= 0x0400)
 #ifndef NOCRYPT
 
 #include <wincrypt.h>
@@ -249,7 +229,6 @@ Abstract:
 #ifndef NOGDI
 
 #include <commdlg.h>
-
 
 #include <winspool.h>
 
@@ -277,7 +256,7 @@ Abstract:
 
 #endif
 
-#if(WINVER >= 0x0400)
+#if (WINVER >= 0x0400)
 #ifndef NOMCX
 
 #include <mcx.h>
@@ -292,8 +271,8 @@ Abstract:
 #endif /* WINVER >= 0x0400 */
 
 #ifndef RC_INVOKED
-#if     ( _MSC_VER >= 800 )
-#pragma warning(default:4001)
+#if (_MSC_VER >= 800)
+#pragma warning(default : 4001)
 #endif
 #endif /* RC_INVOKED */
 
