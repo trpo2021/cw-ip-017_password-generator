@@ -6,7 +6,6 @@
 #include "libpwgen/isint.h"
 #include "libpwgen/num.h"
 #include "libpwgen/reg.h"
-#include "libpwgen/windows.h"
 #include "thirdparty/catch.hpp"
 #include <string>
 
