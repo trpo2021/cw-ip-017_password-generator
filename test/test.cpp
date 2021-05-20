@@ -8,6 +8,7 @@
 #include "libpwgen/reg.h"
 #include "thirdparty/catch.hpp"
 #include <string>
+#include <windows.h>
 
 using std::string;
 
