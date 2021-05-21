@@ -65,3 +65,16 @@ TEST_CASE("generate", " ")
     }
     CHECK(n == 6);
 }
+TEST_CASE("Spec", " ")
+{
+    int Mask[] = {1, 0, 1, 0, 1, 0};
+    string Pass = "2W1r9Y";
+    Spec(6, Pass, Mask, 1);
+    int k = 0;
+    for (auto& c : Pass) {
+        if (isalnum(c) && isupper(c)) {
+            k++;
+        }
+    }
+    CHECK(k == 1);
+}
