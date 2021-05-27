@@ -9,9 +9,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Check codestyle
-        run: git ls-files --ignored --exclude-standard *.cpp *.h do clang-format -i && git diff --exit-code
-
       - name: Test
         run: make test && ./bin/test
 
