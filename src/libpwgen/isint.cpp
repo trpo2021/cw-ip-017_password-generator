@@ -8,9 +8,6 @@ bool isInt(std::string str)
         return false;
     for (int i = 0; i < (int)str.length(); ++i) {
         if (!isdigit(str[i])) {
-            if (i == 0 && str[i] == '-') {
-                continue;
-            }
             return false;
         }
     }
