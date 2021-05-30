@@ -37,6 +37,10 @@ int main()
     unambiguity = inputInt("Remove ambiguity? 1-true,other-false: ");
     cout << "\n";
 
+    if ((numbers + registr + symbols) > n) {
+        cout << "Warning: Your passowrd too litle that have all functions" << endl;
+    }
+
     Mask = new int[n];
     k = n / ((numbers == 1) + (registr == 1) + (symbols == 1) + 1);
 
