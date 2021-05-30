@@ -8,8 +8,11 @@ OBJECTS = pwgen.exe pwgen.o pwgen.d reg.o reg.d Odn.o Odn.d Spec.o Spec.d num.o 
 
 all: bin/pwgen.exe
 
-bin/pwgen.exe: $(PWG)/pwgen.o $(LIBPWG)/reg.o $(LIBPWG)/Odn.o $(LIBPWG)/Spec.o $(LIBPWG)/num.o $(LIBPWG)/generate.o $(LIBPWG)/copy.o $(LIBPWG)/isint.o
-	$(CXX) -I src -Wall -Werror -o bin/pwgen.exe $(PWG)/pwgen.o $(LIBPWG)/reg.o $(LIBPWG)/Odn.o $(LIBPWG)/Spec.o $(LIBPWG)/num.o $(LIBPWG)/generate.o $(LIBPWG)/copy.o $(LIBPWG)/isint.o
+bin/pwgen.exe: $(PWG)/pwgen.o $(LIBPWG)/libpwgen.a
+	$(CXX) -I src -Wall -Werror -o bin/pwgen.exe $(PWG)/pwgen.o $(LIBPWG)/libpwgen.a
+
+$(LIBPWG)/libpwgen.a: $(LIBPWG)/reg.o $(LIBPWG)/Odn.o $(LIBPWG)/Spec.o $(LIBPWG)/num.o $(LIBPWG)/generate.o $(LIBPWG)/copy.o $(LIBPWG)/isint.o
+	ar rcs $@ $^
 
 $(LIBPWG)/Odn.o: $(SLIBPWG)/Odn.cpp
 	$(CXX) -I src $(CFLAGS) -MMD -o $(LIBPWG)/Odn.o $(SLIBPWG)/Odn.cpp
@@ -39,8 +42,8 @@ $(PWG)/pwgen.o: src/pwgen/main.cpp
 
 test: bin/test.exe
 
-bin/test.exe: obj/test/test.o $(LIBPWG)/reg.o $(LIBPWG)/Odn.o $(LIBPWG)/Spec.o $(LIBPWG)/num.o $(LIBPWG)/generate.o $(LIBPWG)/copy.o $(LIBPWG)/isint.o
-	$(CXX) -I src -Wall -Werror -o bin/test obj/test/test.o $(LIBPWG)/reg.o $(LIBPWG)/Odn.o $(LIBPWG)/Spec.o $(LIBPWG)/num.o $(LIBPWG)/generate.o $(LIBPWG)/copy.o $(LIBPWG)/isint.o
+bin/test.exe: obj/test/test.o $(LIBPWG)/libpwgen.a
+	$(CXX) -I src -Wall -Werror -o bin/test obj/test/test.o $(LIBPWG)/libpwgen.a
 
 obj/test/test.o: test/test.cpp
 	$(CXX) -I src -I thirdparty $(CFLAGS) -MMD -o obj/test/test.o test/test.cpp
