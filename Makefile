@@ -11,11 +11,17 @@ all: bin/pwgen.exe
 bin/pwgen.exe: $(PWG)/pwgen.o $(LIBPWG)/libpwgen.a
 	$(CXX) -I src -Wall -Werror -o bin/pwgen.exe $(PWG)/pwgen.o $(LIBPWG)/libpwgen.a
 
-$(LIBPWG)/libpwgen.a: $(LIBPWG)/reg.o $(LIBPWG)/Odn.o $(LIBPWG)/Spec.o $(LIBPWG)/num.o $(LIBPWG)/generate.o $(LIBPWG)/copy.o $(LIBPWG)/isint.o
+$(LIBPWG)/libpwgen.a: $(LIBPWG)/reg.o $(LIBPWG)/Odn.o $(LIBPWG)/Spec.o $(LIBPWG)/num.o $(LIBPWG)/generate.o $(LIBPWG)/copy.o $(LIBPWG)/isint.o $(LIBPWG)/SmZn.o $(LIBPWG)/Vibor.o
 	ar rcs $@ $^
 
 $(LIBPWG)/Odn.o: $(SLIBPWG)/Odn.cpp
 	$(CXX) -I src $(CFLAGS) -MMD -o $(LIBPWG)/Odn.o $(SLIBPWG)/Odn.cpp
+
+$(LIBPWG)/Vibor.o: $(SLIBPWG)/Vibor.cpp
+	$(CXX) -I src $(CFLAGS) -MMD -o $(LIBPWG)/Vibor.o $(SLIBPWG)/Vibor.cpp
+
+$(LIBPWG)/SmZn.o: $(SLIBPWG)/SmZn.cpp
+	$(CXX) -I src $(CFLAGS) -MMD -o $(LIBPWG)/SmZn.o $(SLIBPWG)/SmZn.cpp
 
 $(LIBPWG)/num.o: $(SLIBPWG)/num.cpp
 	$(CXX) -I src $(CFLAGS) -MMD -o $(LIBPWG)/num.o $(SLIBPWG)/num.cpp
@@ -38,7 +44,7 @@ $(LIBPWG)/generate.o: $(SLIBPWG)/generate.cpp
 $(PWG)/pwgen.o: src/pwgen/main.cpp
 	$(CXX) -I src $(CFLAGS) -MMD -o $(PWG)/pwgen.o $(SPWG)/main.cpp
 
--include pwgen.d reg.d Odn.d Spec.d num.d generate.d copy.d isint.d
+-include pwgen.d reg.d Odn.d Spec.d num.d generate.d copy.d isint.d SmZn.d Vibor.d
 
 test: bin/test.exe
 
