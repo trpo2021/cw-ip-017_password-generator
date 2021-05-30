@@ -49,7 +49,7 @@ TEST_CASE("isInt", " ")
     CHECK(isInt("1,67") == false);
     CHECK(isInt(".45") == false);
     CHECK(isInt("5") == true);
-    CHECK(isInt("-5") == true);
+    CHECK(isInt("-5") == false);
 }
 
 TEST_CASE("generate", " ")
