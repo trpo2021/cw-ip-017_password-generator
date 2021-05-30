@@ -67,14 +67,27 @@ TEST_CASE("generate", " ")
 }
 TEST_CASE("Spec", " ")
 {
-    int Mask[] = {1, 0, 1, 0, 1, 0};
+    int Mask[] = {1, 2, 1, 0, 1, 2};
     string Pass = "2W1r9Y";
-    Spec(6, Pass, Mask, 1);
+    Spec(6, Pass, Mask, 2);
     int k = 0;
     for (auto& c : Pass) {
         if (isalnum(c) && isupper(c)) {
             k++;
         }
     }
-    CHECK(k == 1);
+    CHECK(k == 2);
+}
+TEST_CASE("num", " ")
+{
+    int k = 0;
+    int Mask[] = {0, 0, 0, 0};
+    string Pass = "cifj";
+    Num(4, Pass, Mask, 2);
+    for (auto& c : Pass) {
+        if (isalpha(c)) {
+            k++;
+        }
+    }
+    CHECK(k == 2);
 }
