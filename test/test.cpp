@@ -1,13 +1,13 @@
 #define CATCH_CONFIG_MAIN
 #include "libpwgen/Odn.h"
+#include "libpwgen/SmZn.h"
 #include "libpwgen/Spec.h"
+#include "libpwgen/Vibor.h"
 #include "libpwgen/copy.h"
 #include "libpwgen/generate.h"
 #include "libpwgen/isint.h"
 #include "libpwgen/num.h"
 #include "libpwgen/reg.h"
-#include "libpwgen/SmZn.h"
-#include "libpwgen/Vibor.h"
 #include "thirdparty/catch.hpp"
 #include <string>
 
