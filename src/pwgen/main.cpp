@@ -38,7 +38,8 @@ int main()
     cout << "\n";
 
     if ((numbers + registr + symbols) > n) {
-        cout << "Warning: Your passowrd too litle that have all functions" << endl;
+        cout << "Warning: Your passowrd too litle that have all functions"
+             << endl;
     }
 
     Mask = new int[n];
