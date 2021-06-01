@@ -1,4 +1,8 @@
 #pragma once
 #include <string>
 
-void SmZn(int i, char p, std::string& Pass, int cord);
+void SmZn(
+        int NumClassSimbols,
+        char SimbClassSimbols,
+        std::string& Pass,
+        int cord);

@@ -1,4 +1,4 @@
 #pragma once
 #include <string>
 
-int Odn(int n, std::string& Pass, int Mask[]);
+int Odn(int PassLenth, std::string& Pass, int Mask[]);

@@ -6,9 +6,9 @@
 
 void Vibor(int i, int j, std::string& Pass, int Mask[])
 {
-    std::string O = "o0OlI15SsZz2";
+    std::string StrPas = "o0OlI15SsZz2";
 
-    if (Pass[i] == O[j]) {
+    if (Pass[i] == StrPas[j]) {
         switch (Mask[i]) {
         case 1: {
             SmZn(10, '0', Pass, i);
