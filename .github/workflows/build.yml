@@ -1,0 +1,16 @@
+name: Build
+
+on: push
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Test
+        run: make test && ./bin/test
+
+      - name: Build application
+        run: make 
