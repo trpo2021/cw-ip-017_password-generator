@@ -3,19 +3,20 @@
 #include <iostream>
 #include <string>
 
-void SmZn(int i, char p, std::string& Pass, int cord)
+void SmZn(
+        int NumClassSimbols, char SimbClassSimbols, std::string& Pass, int cord)
 {
-    int fl;
-    std::string O = "o0OlI15SsZz2";
+    int flag;
+    std::string StrPas = "o0OlI15SsZz2";
     char t;
-    fl = 0;
+    flag = 0;
 
-    while (fl != 1) {
-        t = rand() % i + p;
-        fl = 1;
+    while (flag != 1) {
+        t = rand() % NumClassSimbols + SimbClassSimbols;
+        flag = 1;
         for (int c = 0; c < 12; c++) {
-            if (t == O[c]) {
-                fl = 0;
+            if (t == StrPas[c]) {
+                flag = 0;
             }
         }
     }
